@@ -9,8 +9,9 @@
       <%= simple_form_for Quote.new do |f| %>
         <div class="modal-body">
           <h1>Enter Your Quote Details</h1>
-            <%= f.input  :saying %>
-            <%= f.input  :author %>
+            <%= f.input  :saying, label: 'What is the saying you want to add?', placeholder: 'Fear is the disease. Hustle is the antidote.' %>
+            <br />
+            <%= f.input  :author, label: 'Who is the author of the quote?', placeholder: 'Travis Kalanick' %>
             <br />
         </div>
         <div class="modal-footer">
