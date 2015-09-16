@@ -1,6 +1,12 @@
 class QuotesController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+
   def index
     @quote = Quote.order('RANDOM()').first
+  end
+
+  def show
+    @quote = Quote.find(params[:id])
   end
 
   def create
@@ -19,5 +25,9 @@ class QuotesController < ApplicationController
 
   def quote_params
     params.require(:quote).permit(:saying, :author)
+  end
+
+  def not_found
+    render text: 'Quote not found', status: :not_found
   end
 end
